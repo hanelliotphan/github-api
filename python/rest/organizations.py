@@ -6,12 +6,22 @@ import os
 class Organizations:
     def __init__(self):
         self.git_endpoint = "https://api.github.com"
-        self.headers = {'Authorization': f'token {os.environ["GITHUB_PAT"]}'}
+        self.headers = {"Authorization": f"token {os.environ['GITHUB_PAT']}"}
     
     def list_github_orgs(self):
         pass
     
     def get_org_info(self, org):
+        """
+        get_org_info -- Retrieve information about a Github organization
+
+        @params:
+            1. org (str): Name of the organization (from `https://github.com/<org>`)
+        @return: 
+            response.json() (dict) -- The dictionary of the JSONable object of the requests.get call
+
+        Documentation: https://docs.github.com/en/rest/orgs/orgs#get-an-organization
+        """
         try:
             response = requests.get(f"{self.git_endpoint}/orgs/{org}", headers=self.headers)
             if response.status_code == 200:
