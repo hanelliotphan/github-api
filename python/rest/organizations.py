@@ -1,6 +1,7 @@
-import requests
 import json
+import logging
 import os
+import requests
 
 
 class Organizations:
@@ -39,6 +40,17 @@ class Organizations:
     
    
     def list_org_apps(self, org):
+        """
+        list_org_apps -- List all app installations for a Github organization
+        Note: You must be the organization owner and your PAT must have `admin:read`
+
+        @params:
+            1. org (str): Name of the organization (from `https://github.com/<org>`)
+        @return:
+
+
+        Documentation: https://docs.github.com/en/rest/orgs/orgs#list-app-installations-for-an-organization
+        """
         pass
     
     
