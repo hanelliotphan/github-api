@@ -23,7 +23,7 @@ class Repositories:
         """
         try:
             response = requests.get(f"{self.git_endpoint}/orgs/{org}/repos", headers=self.headers)
-            if response.status_code == 200:
+            if 200 <= response.status_code < 300:
                 return response.json()
             else:
                 print(f"[ERROR] Could not get repositories from Github organization `{org}`\nStatus code: {response.status_code}\nReason: {response.reason}")
