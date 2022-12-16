@@ -98,7 +98,9 @@ class BlockingUsers:
         @params:
             1. org (str): Name of the organization (from `https://github.com/<org>`)
         @return:
-            
+            TBA
+        
+        Documentation: https://docs.github.com/en/rest/orgs/blocking?apiVersion=2022-11-28#list-users-blocked-by-an-organization
         """
         try:
             response = requests.get(f"{self.git_endpoint}/orgs/{org}/blocks", headers=self.headers)
