@@ -47,7 +47,8 @@ class Organizations:
         @params:
             1. org (str): Name of the organization (from `https://github.com/<org>`)
         @return:
-            TBA
+            response.json() (dict) -- Dictionary of general information about the apps in Github 
+            organization and information about each of the apps 
 
         Documentation: https://docs.github.com/en/rest/orgs/orgs#list-app-installations-for-an-organization
         """
@@ -98,7 +99,7 @@ class BlockingUsers:
         @params:
             1. org (str): Name of the organization (from `https://github.com/<org>`)
         @return:
-            TBA
+            response.json() (list) -- List of dictionaries including information of each block user
         
         Documentation: https://docs.github.com/en/rest/orgs/blocking?apiVersion=2022-11-28#list-users-blocked-by-an-organization
         """
