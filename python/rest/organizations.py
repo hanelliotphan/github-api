@@ -111,3 +111,27 @@ class BlockingUsers:
                 print(f"[ERROR] Could not retrieve blocked users of Github organization `{org}`\nStatus code: {response.status_code}\nReason: {response.reason}")
         except Exception as err:
             print(f"[ERROR] Could not retrieve blocked users of Github organization `{org}` with error: {err}")
+
+
+    def check_if_user_blocked_by_org(self, org, username):
+        """
+        check_if_user_blocked_by_org -- Check if a user is blocked by
+            a Github organization
+        Note: You must have to be an organization admin with `admin:org` in your PAT
+
+        @params:
+            1. org (str): Name of the organization (from `https://github.com/<org>`)
+            2. username (str): Github username of the user
+        @ return:
+            (bool) True/False if the user is blocked by the organization
+        
+        Documentation: https://docs.github.com/en/rest/orgs/blocking?apiVersion=2022-11-28#check-if-a-user-is-blocked-by-an-organization
+        """
+        try:
+            response = requests.get(f"{self.git_endpoint}/orgs/{org}/blocks/{username}", headers=self.headers)
+            if 200 <= response.status < 300:
+                return True
+            else:
+                print(f"[WARNING] The user `{username}` might not be blocked by Github organization `{org}` or some error might have occurred\nStatus code: {response.status_code}")
+        except Exception as err:
+            print(f"[ERROR] Could not check if the user `{username}` is blocked by Github organization `{org}` with error: {err}")
